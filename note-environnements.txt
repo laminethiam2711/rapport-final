@@ -1,0 +1,4 @@
+Si ton projet n'a pas de dossier src/environments (Angular 15+), génère-le avec :
+    ng generate environments
+Puis dans tes services, utilise : import { environment } from '../environments/environment';
+Et appelle l'API avec : `${environment.apiUrl}/ta-route`
