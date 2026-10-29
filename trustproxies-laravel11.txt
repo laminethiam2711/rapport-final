@@ -1,0 +1,9 @@
+LARAVEL 11 / 12 : dans bootstrap/app.php, ajoute trustProxies dans withMiddleware :
+
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*');
+    })
+
+LARAVEL 10 : dans app/Http/Middleware/TrustProxies.php, mets :
+
+    protected $proxies = '*';
