@@ -1,7 +1,10 @@
 .git
+.github
 .env
 node_modules
 vendor
+tests
+bootstrap/cache/*.php
 storage/logs/*
 storage/framework/cache/*
 storage/framework/sessions/*

@@ -29,6 +29,13 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Évite l'erreur « Duplicate entry admin@ecole.sn » si le seeder est lancé deux fois
+        if (User::query()->exists()) {
+            $this->command?->info('Base déjà initialisée : seeder ignoré.');
+
+            return;
+        }
+
         $donnees = json_decode(file_get_contents(__DIR__.'/donnees_demo.json'), true);
 
         // Ordre imposé par les clés étrangères

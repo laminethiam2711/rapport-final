@@ -7,7 +7,13 @@ sed -i "s/<VirtualHost \*:80>/<VirtualHost *:${PORT:-80}>/" /etc/apache2/sites-a
 
 php artisan config:clear
 php artisan config:cache
-php artisan route:cache
+
+# Crée / met à jour les tables à chaque démarrage (n'efface rien)
 php artisan migrate --force
+
+# Données de démonstration : à activer avec RUN_SEED=true (le seeder ne fait rien si la base contient déjà des utilisateurs)
+if [ "${RUN_SEED}" = "true" ]; then
+  php artisan db:seed --force
+fi
 
 exec apache2-foreground
